@@ -74,9 +74,8 @@ public class Cliente {
 
             // Cierre del Scanner
             scanner.close();
-
             System.out.println("¡Gracias por usar el cliente!");
-
+ //excepcion en caso de error del cliente
         } catch (Exception e) {
             System.err.println("Error en el cliente: " + e.toString());
             e.printStackTrace();

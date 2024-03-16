@@ -9,13 +9,15 @@ import java.util.Map;
 
 
 public class implementesestu implements estudiante{
+
+    // atributos de estudiante
    public String nombre;
    public int id;
     public double notaTaller1;
     public double notaTaller2;
     public String grupo;
    public Map<Integer, implementesestu> mapaEstudiantes;
-
+// constructor de atributos
     public implementesestu(String nombre, int id, double notaTaller1, double notaTaller2, String grupo) {
         this.nombre = nombre;
         this.id = id;
@@ -23,11 +25,12 @@ public class implementesestu implements estudiante{
         this.notaTaller2 = notaTaller2;
         this.grupo = grupo;
     }
+    // constructor por defecto y metodo de inicializacion para leer el archivo
     public implementesestu() throws IOException {
         mapaEstudiantes = leerArchivo("archivo.txt");
     }
 
-
+// setters y getters de los atributos
     public String getNombre() {
         return nombre;
     }
@@ -68,7 +71,7 @@ public class implementesestu implements estudiante{
         this.grupo = grupo;
     }
 
-
+// metodo para obtener el nombre del estudiante  por medio del id y del contenido del map que es la lectura del archivo
     @Override
     public String getNombreestu(int id) throws RemoteException {
         System.out.println("Buscando estudiante con ID: " + id);
@@ -90,7 +93,7 @@ public class implementesestu implements estudiante{
         return null;
     }
 
-
+// metodo para retornar el grupo del estudiante cuando el cliente ingresa el id y la informacion se encuentra en el map de la lectura del archivo
     @Override
     public String getgrupo(int id) throws RemoteException {
         for (implementesestu estudiante : mapaEstudiantes.values()) {
@@ -101,6 +104,8 @@ public class implementesestu implements estudiante{
         return null;
 
     }
+
+    //metodo para obtener el promedio del estudiante por medio del id o el nombre del contenido del map , que esta cargado desde el metodo de leer el archivo
         @Override
         public double getpromedio(String nombreOId) throws RemoteException {
             double sumaNotas = 0;
@@ -141,7 +146,7 @@ public class implementesestu implements estudiante{
                         String[] nombres = datos[2].split(",");
                         if (nombres.length == 2) {
                             int id = Integer.parseInt(datos[1].trim());
-                            String nombre = nombres[1].trim() + " " + nombres[0].trim(); // Concatenar nombre y apellido
+                            String nombre = nombres[1].trim() + " " + nombres[0].trim();
                             double notaTaller1 = Double.parseDouble(datos[3].trim());
                             double notaTaller2 = Double.parseDouble(datos[4].trim());
                             String grupo = datos[0].trim();

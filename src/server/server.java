@@ -17,7 +17,7 @@ public class server {
 
             // Enlazamos el stub del objeto remoto en el registro
             registry.rebind("EstudianteServer", stub);
-
+            //mensaje del servidor
             System.out.println("Servidor listo...");
 
 
